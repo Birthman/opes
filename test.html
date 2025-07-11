@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head><title>Sui Wallet Test</title></head>
 <body>
-  <button id="connectWalletBtn">Connect Sui Wallet</button>
+  <button id="connectBtn">Connect Sui Wallet</button>
   <script>
-    console.log("window.sui is:", window.sui);
+    const btn = document.getElementById('connectBtn');
 
-    document.getElementById('connectWalletBtn').onclick = async () => {
+    btn.onclick = async () => {
       if (!window.sui) {
         alert('Sui Wallet extension not detected.');
         return;
@@ -14,10 +14,13 @@
       try {
         const accounts = await window.sui.connect();
         alert('Connected: ' + accounts[0]);
-      } catch (e) {
-        alert('Connection failed: ' + e.message);
+      } catch (err) {
+        alert('Connection failed: ' + err);
       }
     };
+
+    console.log('window.sui =', window.sui);
   </script>
 </body>
 </html>
+
