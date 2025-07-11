@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head><title>Sui Wallet Test</title></head>
+<body>
+  <button id="connectWalletBtn">Connect Sui Wallet</button>
+  <script>
+    console.log("window.sui is:", window.sui);
+
+    document.getElementById('connectWalletBtn').onclick = async () => {
+      if (!window.sui) {
+        alert('Sui Wallet extension not detected.');
+        return;
+      }
+      try {
+        const accounts = await window.sui.connect();
+        alert('Connected: ' + accounts[0]);
+      } catch (e) {
+        alert('Connection failed: ' + e.message);
+      }
+    };
+  </script>
+</body>
+</html>
