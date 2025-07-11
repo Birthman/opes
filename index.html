@@ -1,0 +1,311 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Opes (XPS) - Official Site</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f8f9fc;
+      scroll-behavior: smooth;
+    }
+
+    nav {
+      background-color: #fff;
+      display: flex;
+      justify-content: flex-end;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #5e60ce;
+    }
+
+    .image-placeholder {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      background-color: #fff;
+    }
+
+    .image-placeholder img {
+      max-width: 90%;
+      height: auto;
+      border: 2px dashed #ccc;
+      padding: 1rem;
+      background-color: #f9f9f9;
+      border-radius: 12px;
+    }
+
+    .hero {
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(to right, #4f30d6, #2ab7ec);
+      color: white;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      animation: fadeInDown 1s ease-out;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin: 1rem 0;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .hero a.package {
+      color: #fff;
+      text-decoration: underline;
+      font-size: 1rem;
+      word-break: break-word;
+    }
+
+    section {
+      padding: 4rem 2rem;
+      max-width: 960px;
+      margin: auto;
+    }
+
+    .package-id-box {
+      background: #f5f5f5;
+      border: 1px dashed #aaa;
+      padding: 1rem;
+      border-radius: 8px;
+      font-family: monospace;
+      font-size: 0.9rem;
+      word-break: break-all;
+      overflow-wrap: break-word;
+      width: 80%;
+      box-sizing: border-box;
+    }
+
+    .package-id-box a {
+      text-decoration: none;
+      color: #333;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .feature-box {
+      background: #fff;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .feature-box:hover {
+      transform: translateY(-5px);
+    }
+
+    footer {
+      background: #222;
+      color: #ccc;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    footer a {
+      color: #999;
+      margin: 0 0.5rem;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: white;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#token">Token</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+
+
+ <!-- Hero -->
+  <section style="margin-top:10%;"  class="hero" id="home">
+    <h1>Opes (XPS)</h1>
+    <p>Empowering the Sui blockchain – 1,000,000,000 XPS created</p>
+    <a
+      class="package"
+      href="https://suiscan.xyz/mainnet/coin/0x6e49957e2832df47daa0363bd5001a3584e859b138d5c8a3aec24f2006b58469::xps::XPS/txs"
+      target="_blank"
+    >
+      View Package ID on Suiscan
+	  
+	  
+	
+    </a>
+	
+	<!-- Image Placeholder -->
+  <div class="image-placeholder">
+    <img src="Magic.png" alt="XPS Token Logo" />
+  </div>
+  </section>
+
+
+
+
+
+
+  
+
+ 
+
+  <!-- Token Info -->
+  <section id="token">
+    <h2>Token Information</h2>
+    <p><strong>Name:</strong> Opes</p>
+    <p><strong>Symbol:</strong> XPS</p>
+    <p><strong>Decimals:</strong> 9</p>
+    <p><strong>Total Supply:</strong> 1,000,000,000 XPS</p>
+    <p><strong>Package ID:</strong></p>
+    <div class="package-id-box">
+      <a href="https://suiscan.xyz/mainnet/coin/0x6e49957e2832df47daa0363bd5001a3584e859b138d5c8a3aec24f2006b58469::xps::XPS/txs" target="_blank">
+        0x6e49957e2832df47daa0363bd5001a3584e859b138d5c8a3aec24f2006b58469::xps::XPS
+      </a>
+      <button id="copyBtn" style="padding: 6px 12px; background:#5e60ce; color:#fff; border:none; border-radius: 5px; cursor:pointer;">Copy</button>
+    </div>
+    <p id="copyMessage" style="text-align:center; color:green; font-weight:bold; display:none; margin-top: 0.5rem;">Copied to clipboard!</p>
+  </section>
+
+
+
+
+  <!-- Features -->
+  <section id="features">
+    <h2>Features</h2>
+    <div class="features">
+      <div class="feature-box">
+        <h3>Decentralized</h3>
+        <p>Built fully on the Sui blockchain for fast, secure, and low-cost transactions.</p>
+      </div>
+      <div class="feature-box">
+        <h3>Liquidity Pool</h3>
+        <p>Tradable on DEXes like Cetus — liquidity support coming soon!</p>
+      </div>
+      <div class="feature-box">
+        <h3>Community Powered</h3>
+        <p>Governance plans and airdrops for early holders and contributors.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact & Socials</h2>
+    <p>Follow us on social media and stay updated.</p>
+    <p>Email: <a href="mailto:info@opestoken.xyz">info@opestoken.xyz</a></p>
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Token Distribution -->
+  <section id="distribution">
+    <h2>📊 Token Distribution</h2>
+    <div class="distribution">
+      <ul>
+        <li>10% Liquidity Pool – 100,000,000 XPS</li>
+        <li>20% User Rewards & Airdrops – 200,000,000 XPS</li>
+        <li>30% Staking Rewards – 300,000,000 XPS</li>
+        <li>15% Team & Development – 150,000,000 XPS</li>
+        <li>15% Marketing & Partnerships – 150,000,000 XPS</li>
+        <li>10% Treasury Reserve – 100,000,000 XPS</li>
+      </ul>
+    </div>
+  </section>
+
+  
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Opes (XPS). All rights reserved.</p>
+    <p>
+      <a href="#">Twitter</a> | 
+      <a href="#">Telegram</a> | 
+      <a href="#">GitHub</a>
+    </p>
+  </footer>
+
+
+
+<script>
+  const copyBtn = document.getElementById('copyBtn');
+  const copyMessage = document.getElementById('copyMessage');
+  const packageID = '0x6e49957e2832df47daa0363bd5001a3584e859b138d5c8a3aec24f2006b58469::xps::XPS';
+
+  copyBtn.addEventListener('click', () => {
+    navigator.clipboard.writeText(packageID).then(() => {
+      copyMessage.style.display = 'block';
+      setTimeout(() => {
+        copyMessage.style.display = 'none';
+      }, 2000);
+    }).catch(err => {
+      alert('Failed to copy: ' + err);
+    });
+  });
+</script>
+</body>
+</html>
