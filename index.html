@@ -171,6 +171,13 @@
   </nav>
 
 
+<!-- Sui Wallet Connect Button -->
+<button id="connectWalletBtn" style="padding: 10px 20px; font-size:16px;">
+  Connect Sui Wallet
+</button>
+
+
+	
 
  <!-- Hero -->
   <section style="margin-top:10%;"  class="hero" id="home">
@@ -305,6 +312,51 @@
     }).catch(err => {
       alert('Failed to copy: ' + err);
     });
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<script>
+  const connectBtn = document.getElementById("connectWalletBtn");
+
+  connectBtn.addEventListener("click", async () => {
+    if (!window.sui) {
+      alert("Sui Wallet extension not found! Please install it first.");
+      return;
+    }
+
+    try {
+      // Request connection to the wallet
+      const accounts = await window.sui.connect();
+      alert("Connected wallet address: " + accounts[0]);
+      // You can update the UI or do other stuff here
+      connectBtn.textContent = "Wallet Connected: " + accounts[0].slice(0,6) + "..." + accounts[0].slice(-4);
+      connectBtn.disabled = true;
+    } catch (error) {
+      console.error("Wallet connection failed:", error);
+      alert("Failed to connect wallet.");
+    }
   });
 </script>
 </body>
