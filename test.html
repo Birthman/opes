@@ -1,26 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><title>Sui Wallet Test</title></head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Multi-Wallet Connect (Sui & Ethereum)</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      background: #f0f2f5;
+      text-align: center;
+    }
+    button {
+      font-size: 1rem;
+      padding: 1rem 2rem;
+      margin: 1rem;
+      cursor: pointer;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      background-color: #4f30d6;
+      transition: background-color 0.3s ease;
+    }
+    button:hover:not(:disabled) {
+      background-color: #3824a6;
+    }
+    button:disabled {
+      background-color: #aaa;
+      cursor: default;
+    }
+    #walletAddress {
+      margin-top: 2rem;
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #333;
+      word-break: break-all;
+    }
+  </style>
+</head>
 <body>
-  <button id="connectBtn">Connect Sui Wallet</button>
-  <script>
-    const btn = document.getElementById('connectBtn');
 
-    btn.onclick = async () => {
+  <h1>Connect Your Wallet</h1>
+
+  <button id="connectSuiBtn">Connect Sui Wallet</button>
+  <button id="connectEthBtn">Connect Ethereum Wallet (MetaMask)</button>
+
+  <p id="walletAddress">No wallet connected</p>
+
+  <script>
+    const suiBtn = document.getElementById('connectSuiBtn');
+    const ethBtn = document.getElementById('connectEthBtn');
+    const walletAddressP = document.getElementById('walletAddress');
+
+    suiBtn.onclick = async () => {
       if (!window.sui) {
-        alert('Sui Wallet extension not detected.');
+        alert("Sui Wallet extension not found! Please install it first.");
         return;
       }
       try {
         const accounts = await window.sui.connect();
-        alert('Connected: ' + accounts[0]);
-      } catch (err) {
-        alert('Connection failed: ' + err);
+        walletAddressP.textContent = "Sui Wallet connected: " + accounts[0];
+        suiBtn.disabled = true;
+        ethBtn.disabled = true;
+      } catch (e) {
+        console.error(e);
+        alert("Sui wallet connection failed.");
       }
     };
 
-    console.log('window.sui =', window.sui);
+    ethBtn.onclick = async () => {
+      if (!window.ethereum) {
+        alert("Ethereum wallet not found! Please install MetaMask.");
+        return;
+      }
+      try {
+        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+        walletAddressP.textContent = "Ethereum Wallet connected: " + accounts[0];
+        ethBtn.disabled = true;
+        suiBtn.disabled = true;
+      } catch (e) {
+        console.error(e);
+        alert("Ethereum wallet connection failed.");
+      }
+    };
   </script>
+
+
+
 
 
 
