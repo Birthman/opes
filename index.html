@@ -171,10 +171,7 @@
   </nav>
 
 
-<!-- Sui Wallet Connect Button -->
-<button id="connectWalletBtn" style="padding: 10px 20px; font-size:16px;">
-  Connect Sui Wallet
-</button>
+<button id="connectWalletBtn">Connect Sui Wallet</button>
 
 
 	
@@ -336,27 +333,28 @@
 
 
 
-
-	<script>
-console.log("window.sui:", window.sui);	
+<script>
   const connectBtn = document.getElementById("connectWalletBtn");
 
   connectBtn.addEventListener("click", async () => {
-    if (!window.sui) {
-      alert("Sui Wallet extension not found! Please install it first.");
+    if (!window.sui || typeof window.sui.connect !== "function") {
+      alert("Sui Wallet extension not detected. Make sure it's installed and you're using HTTPS.");
       return;
     }
 
     try {
-      // Request connection to the wallet
       const accounts = await window.sui.connect();
-      alert("Connected wallet address: " + accounts[0]);
-      // You can update the UI or do other stuff here
-      connectBtn.textContent = "Wallet Connected: " + accounts[0].slice(0,6) + "..." + accounts[0].slice(-4);
-      connectBtn.disabled = true;
-    } catch (error) {
-      console.error("Wallet connection failed:", error);
-      alert("Failed to connect wallet.");
+      const address = accounts?.[0];
+      if (address) {
+        alert("Wallet connected: " + address);
+        connectBtn.textContent = "Connected: " + address.slice(0, 6) + "..." + address.slice(-4);
+        connectBtn.disabled = true;
+      } else {
+        alert("No account found.");
+      }
+    } catch (err) {
+      console.error("Error connecting to wallet:", err);
+      alert("Wallet connection failed.");
     }
   });
 </script>
