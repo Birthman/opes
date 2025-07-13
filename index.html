@@ -171,7 +171,6 @@
   </nav>
 
 
-<button id="connectWalletBtn">Connect Sui Wallet</button>
 
 
 	
@@ -288,11 +287,8 @@
     <p>&copy; 2025 Opes (XPS). All rights reserved.</p>
     <p>
       <a href="https://x.com/opes1182902?t">Twitter</a> | 
-      <a href="#">Telegram</a> | 
+      <a href="t.me/opesxps">Telegram</a> | 
       <a href="#">GitHub</a>
-
-Want to test wallet connection? <a href="test.html">Click here</a>
-
     </p>
   </footer>
 
@@ -316,50 +312,5 @@ Want to test wallet connection? <a href="test.html">Click here</a>
 </script>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script>
-  const connectBtn = document.getElementById("connectWalletBtn");
-
-  connectBtn.addEventListener("click", async () => {
-    if (!window.sui || typeof window.sui.connect !== "function") {
-      alert("Sui Wallet extension not detected. Make sure it's installed and you're using HTTPS.");
-      return;
-    }
-
-    try {
-      const accounts = await window.sui.connect();
-      const address = accounts?.[0];
-      if (address) {
-        alert("Wallet connected: " + address);
-        connectBtn.textContent = "Connected: " + address.slice(0, 6) + "..." + address.slice(-4);
-        connectBtn.disabled = true;
-      } else {
-        alert("No account found.");
-      }
-    } catch (err) {
-      console.error("Error connecting to wallet:", err);
-      alert("Wallet connection failed.");
-    }
-  });
-</script>
 </body>
 </html>
