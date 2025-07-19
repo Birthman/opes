@@ -156,31 +156,34 @@
     </div>
   </section>
 
-  <script>
-    const connectBtn = document.getElementById("connectWallet");
-    const walletAddressEl = document.getElementById("walletAddress");
+ <script>
+  const connectBtn = document.getElementById("connectWallet");
+  const walletAddressEl = document.getElementById("walletAddress");
 
-    connectBtn.addEventListener("click", async () => {
-      if (!window.sui) {
-        alert("Sui Wallet not found! Please install it first.");
-        return;
+  connectBtn.addEventListener("click", async () => {
+    if (!window.sui || !window.sui.request) {
+      alert("Sui Wallet extension not found! Please install it.");
+      return;
+    }
+    try {
+      await window.sui.request({ method: "sui_connect" });
+      const accounts = await window.sui.request({ method: "sui_getAccounts" });
+      const address = accounts?.[0];
+
+      if (address) {
+        walletAddressEl.textContent = "Connected: " + address;
+        connectBtn.disabled = true;
+        connectBtn.textContent = "Wallet Connected";
+      } else {
+        alert("No wallet address returned.");
       }
-      try {
-        const result = await window.sui.connect();
-        const address = result.accounts?.[0]?.address || result.address || result.accounts?.[0];
-        if (address) {
-          walletAddressEl.textContent = "Connected: " + address;
-          connectBtn.disabled = true;
-          connectBtn.textContent = "Wallet Connected";
-        } else {
-          alert("No address returned from wallet.");
-        }
-      } catch (err) {
-        console.error("Wallet connection failed", err);
-        alert("Failed to connect wallet.");
-      }
-    });
-  </script>
+    } catch (err) {
+      console.error("Wallet connection failed:", err);
+      alert("Failed to connect to Sui wallet.");
+    }
+  });
+</script>
+
 
 </body>
 </html>
