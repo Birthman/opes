@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Opes (XPS) - Official Site</title>
-  <!-- Favicon removed to avoid 404 error -->
+  <link rel="icon" href="xps-favicon.png" type="image/png">
   <style>
     body {
       margin: 0;
@@ -104,27 +104,18 @@
       cursor: pointer;
       font-size: 1rem;
     }
-    .staking-box {
-      background: #fff;
-      border-radius: 8px;
-      padding: 2rem;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
-      text-align: center;
-    }
-    .staking-box input {
-      padding: 10px;
-      font-size: 1rem;
-      width: 60%;
-      margin: 1rem auto;
-      display: block;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
+	
+	
+	
+	
+	
+	
+	
+	
+
   </style>
 </head>
 <body>
-
-  <!-- Page content starts here -->
 
   <nav>
     <div><strong>XPS</strong></div>
@@ -133,7 +124,6 @@
       <li><a href="#token">Token</a></li>
       <li><a href="#features">Features</a></li>
       <li><a href="#distribution">Distribution</a></li>
-      <li><a href="#wallet-connect">Wallet</a></li>
       <li><a href="#faq">FAQ</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -148,42 +138,88 @@
     </div>
   </section>
 
-  <section id="wallet-connect">
-    <h2>Connect Wallet</h2>
-    <div style="text-align: center;">
-      <button id="connectWallet" class="btn">Connect Sui Wallet</button>
-      <p id="walletAddress" style="margin-top: 1rem; font-weight: bold;"></p>
+  <section id="token">
+    <h2>Token Information</h2>
+    <p><strong>Name:</strong> Opes</p>
+    <p><strong>Symbol:</strong> XPS</p>
+    <p><strong>Decimals:</strong> 9</p>
+    <p><strong>Total Supply:</strong> 1,000,000,000 XPS</p>
+	
+ </section>
+ 
+ 
+ 
+ 
+   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  <section id="features">
+    <h2>Key Features</h2>
+    <div class="features">
+      <div class="feature-box">
+        <h3>Decentralized & Secure</h3>
+        <p>Built on Sui for fast, transparent, and secure transactions.</p>
+      </div>
+      <div class="feature-box">
+        <h3>Community Powered</h3>
+        <p>Governance coming soon. Early adopters get access to airdrops and rewards.</p>
+      </div>
+      <div class="feature-box">
+        <h3>DEX Integration</h3>
+        <p>Available soon on leading Sui DEXes like Aftermath, Cetus, and more.</p>
+      </div>
     </div>
   </section>
 
- <script>
-  const connectBtn = document.getElementById("connectWallet");
-  const walletAddressEl = document.getElementById("walletAddress");
+  <section id="distribution">
+    <h2>Token Distribution</h2>
+    <ul>
+      <li>10% Liquidity Pool – 100,000,000 XPS</li>
+      <li>20% User Rewards & Airdrops – 200,000,000 XPS</li>
+      <li>30% Staking Rewards – 300,000,000 XPS</li>
+      <li>15% Team & Development – 150,000,000 XPS</li>
+      <li>15% Marketing & Partnerships – 150,000,000 XPS</li>
+      <li>10% Treasury Reserve – 100,000,000 XPS</li>
+    </ul>
+  </section>
 
-  connectBtn.addEventListener("click", async () => {
-    if (!window.sui || !window.sui.request) {
-      alert("Sui Wallet extension not found! Please install it.");
-      return;
-    }
-    try {
-      await window.sui.request({ method: "sui_connect" });
-      const accounts = await window.sui.request({ method: "sui_getAccounts" });
-      const address = accounts?.[0];
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>How can I buy XPS?</h3>
+      <p>You can buy XPS on supported Sui-based DEXes like Aftermath or Cetus (coming soon).</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is there a whitepaper?</h3>
+      <p>Yes, it will be available soon. Follow us on social media for updates.</p>
+    </div>
+  </section>
 
-      if (address) {
-        walletAddressEl.textContent = "Connected: " + address;
-        connectBtn.disabled = true;
-        connectBtn.textContent = "Wallet Connected";
-      } else {
-        alert("No wallet address returned.");
-      }
-    } catch (err) {
-      console.error("Wallet connection failed:", err);
-      alert("Failed to connect to Sui wallet.");
-    }
-  });
-</script>
+  <section id="contact">
+    <h2>Contact & Socials</h2>
+    <p>Email: <a href="mailto:info@opestoken.xyz">info@opestoken.xyz</a></p>
+    <p>
+      <a href="https://x.com/opes1182902?t" target="_blank">Twitter</a> |
+      <a href="https://t.me/opesxps" target="_blank">Telegram</a> |
+      <a href="whitepaper.html" target="_blank">whitepaper</a>
+    </p>
+  </section>
 
+  <footer>
+    <p>&copy; 2025 Opes (XPS). All rights reserved.</p>
+    <p>
+      <a href="privacy-policy.html" target="_blank">Privacy Policy</a> | <a href="terms-of-use.html" target="_blank">Terms of Use</a>
+    </p>
+  </footer>
 
 </body>
 </html>
