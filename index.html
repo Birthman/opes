@@ -104,15 +104,22 @@
       cursor: pointer;
       font-size: 1rem;
     }
-	
-	
-	
-	
-	
-	
-	
-	
-
+    .staking-box {
+      background: #fff;
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+    .staking-box input {
+      padding: 10px;
+      font-size: 1rem;
+      width: 60%;
+      margin: 1rem auto;
+      display: block;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
   </style>
 </head>
 <body>
@@ -124,6 +131,7 @@
       <li><a href="#token">Token</a></li>
       <li><a href="#features">Features</a></li>
       <li><a href="#distribution">Distribution</a></li>
+      <li><a href="#staking">Staking</a></li>
       <li><a href="#faq">FAQ</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -144,23 +152,7 @@
     <p><strong>Symbol:</strong> XPS</p>
     <p><strong>Decimals:</strong> 9</p>
     <p><strong>Total Supply:</strong> 1,000,000,000 XPS</p>
-	
- </section>
- 
- 
- 
- 
-   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  </section>
 
   <section id="features">
     <h2>Key Features</h2>
@@ -192,6 +184,17 @@
     </ul>
   </section>
 
+  <section id="staking">
+    <h2>Stake Your XPS</h2>
+    <div class="staking-box">
+      <p>Earn rewards by staking your XPS tokens. Connect your wallet and get started.</p>
+      <button class="btn" id="connectWallet">Connect Sui Wallet</button>
+      <p id="walletAddress" style="margin-top: 1rem; font-weight: bold;"></p>
+      <input type="number" placeholder="Enter amount of XPS to stake" />
+      <button class="btn">Stake Now</button>
+    </div>
+  </section>
+
   <section id="faq">
     <h2>Frequently Asked Questions</h2>
     <div class="faq-item">
@@ -204,7 +207,7 @@
     </div>
   </section>
 
-  <section id="contact">
+   <section id="contact">
     <h2>Contact & Socials</h2>
     <p>Email: <a href="mailto:info@opestoken.xyz">info@opestoken.xyz</a></p>
     <p>
@@ -220,6 +223,28 @@
       <a href="privacy-policy.html" target="_blank">Privacy Policy</a> | <a href="terms-of-use.html" target="_blank">Terms of Use</a>
     </p>
   </footer>
+
+  <script>
+    const connectBtn = document.getElementById("connectWallet");
+    const walletAddressEl = document.getElementById("walletAddress");
+
+    connectBtn.addEventListener("click", async () => {
+      if (!window.sui) {
+        alert("Sui Wallet not found! Please install it first.");
+        return;
+      }
+      try {
+        const accounts = await window.sui.request({ method: "sui_connect" });
+        const address = accounts.accounts[0];
+        walletAddressEl.textContent = "Connected: " + address;
+        connectBtn.disabled = true;
+        connectBtn.textContent = "Wallet Connected";
+      } catch (err) {
+        console.error("Wallet connection failed", err);
+        alert("Failed to connect wallet.");
+      }
+    });
+  </script>
 
 </body>
 </html>
